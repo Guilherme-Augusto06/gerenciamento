@@ -1,70 +1,169 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const SalasScreen = () => {
+  const salas = [
+    { id: 1, nome: 'C13', professor: 'Professor Carlos' },
+    { id: 2, nome: 'C14', professor: 'Professor Thiago' },
+    { id: 3, nome: 'C16', professor: 'Informatica' },
+    { id: 4, nome: 'C13', professor: 'Professor Carlos' },
+    { id: 5, nome: 'C13', professor: 'Professor Carlos' },
+  ];
 
-export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.iconButton}>
+          <Ionicons name="arrow-back" size={25} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconButton}>
+          <Ionicons name="menu" size={25} color="white" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Logo e Título */}
+      <View style={styles.logoContainer}>
+        <Image source={require('@/assets/images/logosenai.png')}/>
+      <Text style={styles.subtitle}>Salas</Text>
+      </View>
+
+
+      {/* Barra de pesquisa */}
+      <View style={styles.searchContainer}>
+        <TextInput style={styles.searchInput} placeholder="Buscar..." />
+        <TouchableOpacity style={styles.filterButton}>
+          <Ionicons name="filter" size={24} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.addButton}>
+          <Ionicons name="add-circle" size={24} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.editButton}>
+          <Ionicons name="create" size={24} color="white" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Lista de salas com ScrollView */}
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {salas.map((sala) => (
+          <View key={sala.id} style={styles.card}>
+            <View style={styles.cardImagePlaceholder} />
+            <View style={styles.cardContent}>
+              <Text style={styles.cardTitle}>{sala.nome}</Text>
+              <Text style={styles.cardSubtitle}>{sala.professor}</Text>
+            </View>
+          </View>
+        ))}
+      </ScrollView>
+
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  
+  container: {
+    flex: 1,
+    backgroundColor: '#1c1c1c',
+    paddingHorizontal: 10,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginVertical: 40,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#fff',
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 15,
+  },
+  iconButton: {
+    backgroundColor: '#8B0000',
+    borderRadius: 25,
+    padding: 15,
+
+  },
+  title: {
+    fontSize: 22,
+    color: 'white',
+    marginVertical: 15,
+  },
+  searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    marginBottom: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  searchInput: {
+    flex: 1,
+    height: 40,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    paddingHorizontal: 15,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  filterButton: {
+    marginLeft: 10,
+    backgroundColor: '#B01818',
+    borderRadius: 50,
+    padding: 10,
+  },
+  addButton: {
+    marginLeft: 10,
+    backgroundColor: '#B01818',
+    borderRadius: 50,
+    padding: 10,
+  },
+  editButton: {
+    marginLeft: 10,
+    backgroundColor: '#B01818',
+    borderRadius: 50,
+    padding: 10,
+  },
+  scrollContent: {
+    paddingBottom: 100, // Adiciona espaço para evitar sobreposição com o footer
+  },
+  card: {
+    flexDirection: 'row',
+    backgroundColor: '#333',
+    borderRadius: 10,
+    marginBottom: 15,
+    overflow: 'hidden',
+  },
+  cardImagePlaceholder: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#555', // Cor de fundo para representar o espaço da imagem
+  },
+  cardContent: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'center',
+  },
+  cardTitle: {
+    fontSize: 18,
+    color: '#fff',
+  },
+  cardSubtitle: {
+    fontSize: 14,
+    color: '#fff',
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 15,
+    backgroundColor: 'red',
     position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
+  footerButton: {
+    padding: 10,
   },
 });
+
+export default SalasScreen;
