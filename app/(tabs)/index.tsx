@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image, SafeAreaView, StatusBar } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const SalasScreen = () => {
   const salas = [
@@ -12,7 +12,10 @@ const SalasScreen = () => {
   ];
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      {/* Adiciona a barra de status com cor personalizada */}
+      <StatusBar backgroundColor="#1c1c1c" barStyle="light-content" />
+      
       <View style={styles.header}>
         <TouchableOpacity style={styles.iconButton}>
           <Ionicons name="arrow-back" size={25} color="white" />
@@ -24,10 +27,9 @@ const SalasScreen = () => {
 
       {/* Logo e Título */}
       <View style={styles.logoContainer}>
-        <Image source={require('@/assets/images/logosenai.png')}/>
-      <Text style={styles.subtitle}>Salas</Text>
+        <Image source={require('@/assets/images/logosenai.png')} />
+        <Text style={styles.subtitle}>Salas</Text>
       </View>
-
 
       {/* Barra de pesquisa */}
       <View style={styles.searchContainer}>
@@ -55,27 +57,26 @@ const SalasScreen = () => {
           </View>
         ))}
       </ScrollView>
-
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  
   container: {
     flex: 1,
-    backgroundColor: '#1c1c1c',
+    backgroundColor: '#1c1c1c', // cor de fundo ajustada
     paddingHorizontal: 10,
   },
   logoContainer: {
     alignItems: 'center',
-    marginVertical: 40,
+    marginBottom: 10,
   },
   subtitle: {
     fontSize: 16,
     color: '#fff',
     marginTop: 10,
     fontWeight: 'bold',
+
   },
   header: {
     flexDirection: 'row',
@@ -87,7 +88,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#8B0000',
     borderRadius: 25,
     padding: 15,
-
   },
   title: {
     fontSize: 22,
@@ -167,3 +167,4 @@ const styles = StyleSheet.create({
 });
 
 export default SalasScreen;
+  
