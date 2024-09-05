@@ -64,9 +64,8 @@ const SalasScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff', // cor de fundo ajustada
-    marginRight: 20,
-    marginLeft: 20,
+    backgroundColor: '#181717', // cor de fundo ajustada
+    paddingHorizontal: 20,
   },
   logoContainer: {
     alignItems: 'center',
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: '#000',
+    color: '#fff',
     marginTop: 10,
     fontWeight: 'bold',
 
@@ -106,8 +105,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     paddingHorizontal: 15,
-    borderWidth: 1,
-    borderColor: '#9E9E9E',
   },
   filterButton: {
     marginLeft: 10,
@@ -132,25 +129,15 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#595959',
     borderRadius: 10,
     marginBottom: 15,
-    overflow: 'hidden', // Garante que o conteúdo respeite o borderRadius
-    // Efeito de sombra
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
-  
-    elevation: 8, // Necessário para o Android
+    overflow: 'hidden',
   },
   cardImagePlaceholder: {
     width: 100,
     height: 100,
-    backgroundColor: '#9e9e9e', // Cor de fundo para representar o espaço da imagem
+    backgroundColor: '#333', // Cor de fundo para representar o espaço da imagem
     borderRadius: 10,
   },
   cardContent: {
@@ -160,11 +147,11 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 18,
-    color: '#000',
+    color: '#fff',
   },
   cardSubtitle: {
     fontSize: 14,
-    color: '#000',
+    color: '#fff',
   },
   footer: {
     flexDirection: 'row',
