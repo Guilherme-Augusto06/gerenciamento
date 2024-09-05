@@ -64,7 +64,7 @@ const SalasScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1c1c1c', // cor de fundo ajustada
+    backgroundColor: '#181717', // cor de fundo ajustada
     paddingHorizontal: 10,
   },
   logoContainer: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: '#333',
+    backgroundColor: '#595959',
     borderRadius: 10,
     marginBottom: 15,
     overflow: 'hidden',
@@ -137,7 +137,8 @@ const styles = StyleSheet.create({
   cardImagePlaceholder: {
     width: 100,
     height: 100,
-    backgroundColor: '#555', // Cor de fundo para representar o espaço da imagem
+    backgroundColor: '#333', // Cor de fundo para representar o espaço da imagem
+    borderRadius: 10,
   },
   cardContent: {
     flex: 1,
